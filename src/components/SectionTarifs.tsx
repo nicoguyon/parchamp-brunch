@@ -73,7 +73,7 @@ export default function SectionTarifs() {
               className={`transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${0.15 + i * 0.15}s` }}
             >
-              <div className={`relative h-full flex flex-col p-10 border ${
+              <div className={`relative h-full flex flex-col p-10 border rounded-2xl ${
                 t.highlight
                   ? "bg-[#C65D3E] border-[#C65D3E] text-white"
                   : "bg-white border-stone-100 text-[#1A1A1A] hover:border-stone-200 hover:shadow-lg"
@@ -122,7 +122,7 @@ export default function SectionTarifs() {
             href="https://www.leparchamp.com/eat-drink"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-[#2D4739] hover:bg-[#1E3027] text-white text-sm tracking-[0.25em] uppercase px-12 py-5 transition-all duration-300 hover:shadow-xl"
+            className="inline-block bg-[#2D4739] hover:bg-[#1E3027] text-white text-sm tracking-[0.25em] uppercase px-12 py-5 rounded-xl transition-all duration-300 hover:shadow-xl"
           >
             Réserver une table
           </a>

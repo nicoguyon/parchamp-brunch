@@ -91,7 +91,7 @@ export default function Hero() {
               href="https://www.leparchamp.com/eat-drink"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#C65D3E] hover:bg-[#A84B30] text-white text-sm tracking-[0.2em] uppercase px-8 py-4 transition-all duration-300 hover:shadow-lg hover:shadow-terracotta/30"
+              className="inline-block bg-[#C65D3E] hover:bg-[#A84B30] text-white text-sm tracking-[0.2em] uppercase px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-terracotta/30"
             >
               Réserver une table
             </a>

@@ -47,7 +47,7 @@ export default function SectionExperience() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
           {/* Image 2 — mezze */}
           <div
-            className={`relative overflow-hidden aspect-[4/3] transition-all duration-700 delay-300 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
+            className={`relative overflow-hidden rounded-2xl aspect-[4/3] transition-all duration-700 delay-300 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
           >
             <Image
               src="/images/parchamp-v2-2.webp"
@@ -62,7 +62,7 @@ export default function SectionExperience() {
 
           {/* Image 3 — convivialité */}
           <div
-            className={`relative overflow-hidden aspect-[4/3] transition-all duration-700 delay-400 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
+            className={`relative overflow-hidden rounded-2xl aspect-[4/3] transition-all duration-700 delay-400 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
           >
             <Image
               src="/images/parchamp-v2-3.webp"

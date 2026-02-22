@@ -102,7 +102,7 @@ export default function SectionReel() {
               href="https://www.leparchamp.com/eat-drink"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#C65D3E] hover:bg-[#A84B30] text-white text-sm tracking-[0.2em] uppercase px-8 py-4 transition-all duration-300 hover:shadow-lg hover:shadow-[#C65D3E]/30"
+              className="inline-block bg-[#C65D3E] hover:bg-[#A84B30] text-white text-sm tracking-[0.2em] uppercase px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#C65D3E]/30"
             >
               Réserver une table
             </a>
@@ -122,7 +122,7 @@ export default function SectionReel() {
               <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b border-r border-[#C5A572]/60 z-10 pointer-events-none" />
 
               {/* Video container */}
-              <div className="relative overflow-hidden" style={{ aspectRatio: "9/16" }}>
+              <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "9/16" }}>
                 <video
                   ref={videoRef}
                   src="/videos/parchamp-brunch-reel.mp4"
