@@ -27,6 +27,14 @@ body {
   overflow-x: hidden;
 }
 
+/* Force breathing room on mobile */
+@media (max-width: 768px) {
+  section > div:first-child {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', Georgia, serif;
 }
