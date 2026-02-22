@@ -37,7 +37,7 @@ export default function Hero() {
       </div>
 
       {/* Navbar */}
-      <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6">
+      <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-12 md:px-16 py-6">
         <a
           href="https://www.leparchamp.com"
           target="_blank"
