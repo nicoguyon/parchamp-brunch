@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import SectionBrunch from "@/components/SectionBrunch";
 import SectionExperience from "@/components/SectionExperience";
 import SectionDesserts from "@/components/SectionDesserts";
+import SectionReel from "@/components/SectionReel";
 import SectionTarifs from "@/components/SectionTarifs";
 import SectionLieu from "@/components/SectionLieu";
 import Footer from "@/components/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
       <SectionBrunch />
       <SectionExperience />
       <SectionDesserts />
+      <SectionReel />
       <SectionTarifs />
       <SectionLieu />
       <Footer />
