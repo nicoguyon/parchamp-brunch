@@ -25,7 +25,6 @@ const tarifs = [
     unit: "€",
     desc: "Tout le dimanche qu'il vous faut.",
     detail: "Buffet complet à volonté",
-    color: "terracotta",
     highlight: true,
   },
   {
@@ -34,7 +33,6 @@ const tarifs = [
     unit: "€",
     desc: "Les moins de 3 ans sont nos invités.",
     detail: "Brunch + animations inclus",
-    color: "brass",
     highlight: false,
   },
   {
@@ -43,10 +41,52 @@ const tarifs = [
     unit: "€",
     desc: "Une heure d'imaginaire pendant que le buffet vous attend.",
     detail: "Animations créatives 3–11 ans",
-    color: "forest",
     highlight: false,
   },
 ];
+
+// 3D tilt card wrapper
+function TiltCard({
+  children,
+  className,
+  isHighlight,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  isHighlight?: boolean;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.transform = `perspective(800px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) scale(1.02)`;
+  };
+
+  const handleMouseLeave = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className={className}
+      style={{
+        transition: "transform 0.25s cubic-bezier(0.33, 1, 0.68, 1)",
+        willChange: "transform",
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function SectionTarifs() {
   const { ref, visible } = useIntersection();
@@ -73,42 +113,48 @@ export default function SectionTarifs() {
               className={`transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${0.15 + i * 0.15}s` }}
             >
-              <div className={`relative h-full flex flex-col p-10 border rounded-2xl ${
-                t.highlight
-                  ? "bg-[#C65D3E] border-[#C65D3E] text-white"
-                  : "bg-white border-stone-100 text-[#1A1A1A] hover:border-stone-200 hover:shadow-lg"
-              } transition-all duration-300`}>
-
-                {t.highlight && (
-                  <span className="absolute top-0 right-8 -translate-y-1/2 bg-[#C5A572] text-white text-[10px] tracking-[0.2em] uppercase px-4 py-1.5">
-                    Le plus populaire
-                  </span>
-                )}
-
-                <div className="mb-6">
-                  <p className={`text-xs tracking-[0.3em] uppercase mb-2 ${t.highlight ? "text-white/70" : "text-stone-400"}`}>
-                    {t.label}
-                  </p>
-                  <div className="flex items-end gap-1">
-                    <span className={`font-serif text-6xl font-medium leading-none ${t.highlight ? "text-white" : "text-[#1A1A1A]"}`}>
-                      {t.price}
+              <TiltCard
+                isHighlight={t.highlight}
+                className={`h-full ${t.highlight ? "glow-terracotta" : ""} rounded-2xl`}
+              >
+                <div
+                  className={`relative h-full flex flex-col p-10 border rounded-2xl ${
+                    t.highlight
+                      ? "bg-[#C65D3E] border-[#C65D3E] text-white"
+                      : "bg-white border-stone-100 text-[#1A1A1A] hover:border-stone-200 hover:shadow-lg"
+                  } transition-colors duration-300`}
+                >
+                  {t.highlight && (
+                    <span className="absolute top-0 right-8 -translate-y-1/2 bg-[#C5A572] text-white text-[10px] tracking-[0.2em] uppercase px-4 py-1.5">
+                      Le plus populaire
                     </span>
-                    <span className={`font-serif text-3xl mb-1 ${t.highlight ? "text-white/80" : "text-stone-400"}`}>
-                      {t.unit}
-                    </span>
+                  )}
+
+                  <div className="mb-6">
+                    <p className={`text-xs tracking-[0.3em] uppercase mb-2 ${t.highlight ? "text-white/70" : "text-stone-400"}`}>
+                      {t.label}
+                    </p>
+                    <div className="flex items-end gap-1">
+                      <span className={`font-serif text-6xl font-medium leading-none ${t.highlight ? "text-white" : "text-[#1A1A1A]"}`}>
+                        {t.price}
+                      </span>
+                      <span className={`font-serif text-3xl mb-1 ${t.highlight ? "text-white/80" : "text-stone-400"}`}>
+                        {t.unit}
+                      </span>
+                    </div>
                   </div>
+
+                  <div className={`w-8 h-px mb-6 ${t.highlight ? "bg-white/40" : "bg-[#C5A572]"}`} />
+
+                  <p className={`text-sm font-light leading-relaxed mb-4 flex-1 ${t.highlight ? "text-white/85" : "text-stone-600"}`}>
+                    {t.desc}
+                  </p>
+
+                  <p className={`text-xs tracking-wide ${t.highlight ? "text-white/60" : "text-stone-400"}`}>
+                    {t.detail}
+                  </p>
                 </div>
-
-                <div className={`w-8 h-px mb-6 ${t.highlight ? "bg-white/40" : "bg-[#C5A572]"}`} />
-
-                <p className={`text-sm font-light leading-relaxed mb-4 flex-1 ${t.highlight ? "text-white/85" : "text-stone-600"}`}>
-                  {t.desc}
-                </p>
-
-                <p className={`text-xs tracking-wide ${t.highlight ? "text-white/60" : "text-stone-400"}`}>
-                  {t.detail}
-                </p>
-              </div>
+              </TiltCard>
             </div>
           ))}
         </div>
@@ -122,7 +168,7 @@ export default function SectionTarifs() {
             href="https://www.leparchamp.com/eat-drink"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-[#2D4739] hover:bg-[#1E3027] text-white text-sm tracking-[0.25em] uppercase px-12 py-5 rounded-xl transition-all duration-300 hover:shadow-xl"
+            className="shimmer-btn inline-block bg-[#2D4739] hover:bg-[#1E3027] text-white text-sm tracking-[0.25em] uppercase px-12 py-5 rounded-xl transition-colors duration-300 hover:shadow-xl"
           >
             Réserver une table
           </a>

@@ -4,12 +4,15 @@ import { useEffect, useRef, useState } from "react";
 
 const columns = [
   {
+    num: "01",
     icon: "◈",
     label: "Salé",
     color: "terracotta",
     border: "border-[#C65D3E]",
     accent: "text-[#C65D3E]",
     bg: "bg-[#C65D3E]",
+    hoverGradient: "hover:bg-gradient-to-br hover:from-white hover:to-[#C65D3E]/6",
+    glowColor: "rgba(198,93,62,0.12)",
     items: [
       "Houmous nacré & falafels",
       "Mezze levantins",
@@ -23,12 +26,15 @@ const columns = [
     text: "Houmous nacré, falafels croustillants à cœur, mezze qui s'enchaînent sans qu'on sache vraiment comment. Il y a de l'antipasti qui sent l'huile d'olive et l'été, des œufs mimosa fondants, un croque-monsieur qui rappelle les bonnes adresses de quartier — et, au centre du buffet, un rôti de volaille doré à point, découpé à la minute.",
   },
   {
+    num: "02",
     icon: "◇",
     label: "Sucré",
     color: "brass",
     border: "border-[#C5A572]",
     accent: "text-[#C5A572]",
     bg: "bg-[#C5A572]",
+    hoverGradient: "hover:bg-gradient-to-br hover:from-white hover:to-[#C5A572]/6",
+    glowColor: "rgba(197,165,114,0.12)",
     items: [
       "Viennoiseries du four",
       "Crèmes brûlées caramélisées",
@@ -38,12 +44,15 @@ const columns = [
     text: "La viennoiserie sort du four. Les crèmes brûlées attendent sous leur fine croûte de sucre caramélisé, à peine craquelée. Le moelleux au chocolat ne se justifie pas — il se vit.",
   },
   {
+    num: "03",
     icon: "◉",
     label: "Boissons",
     color: "forest",
     border: "border-[#2D4739]",
     accent: "text-[#2D4739]",
     bg: "bg-[#2D4739]",
+    hoverGradient: "hover:bg-gradient-to-br hover:from-white hover:to-[#2D4739]/6",
+    glowColor: "rgba(45,71,57,0.10)",
     items: [
       "Jus de fruits pressés",
       "Café serré ou allongé",
@@ -55,7 +64,7 @@ const columns = [
   },
 ];
 
-function useIntersection(threshold = 0.15) {
+function useIntersection(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -69,6 +78,38 @@ function useIntersection(threshold = 0.15) {
     return () => obs.disconnect();
   }, [threshold]);
   return { ref, visible };
+}
+
+// Stagger-reveals each list item when the card becomes visible
+function AnimatedList({
+  items,
+  accentClass,
+  cardVisible,
+  baseDelay,
+}: {
+  items: string[];
+  accentClass: string;
+  cardVisible: boolean;
+  baseDelay: number;
+}) {
+  return (
+    <ul className="space-y-2.5 mt-auto">
+      {items.map((item, i) => (
+        <li
+          key={item}
+          className="flex items-start gap-3 text-sm text-stone-700 transition-all duration-500"
+          style={{
+            opacity: cardVisible ? 1 : 0,
+            transform: cardVisible ? "translateY(0)" : "translateY(12px)",
+            transitionDelay: cardVisible ? `${baseDelay + i * 0.07}s` : "0s",
+          }}
+        >
+          <span className={`${accentClass} mt-0.5 text-xs`}>—</span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default function SectionBrunch() {
@@ -97,28 +138,49 @@ export default function SectionBrunch() {
               className={`group transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${0.15 + i * 0.15}s` }}
             >
-              <div className="bg-white border border-stone-100 rounded-2xl p-10 md:p-12 h-full flex flex-col hover:shadow-xl hover:shadow-stone-100 transition-shadow duration-500">
+              <div
+                className={`relative bg-white border border-stone-100 rounded-2xl p-10 md:p-12 h-full flex flex-col transition-all duration-500 ${col.hoverGradient} hover:border-stone-200 overflow-hidden`}
+                style={{
+                  // Gradient glow shadow on hover
+                  transition: "box-shadow 0.4s ease, background 0.4s ease, border-color 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 60px ${col.glowColor}, 0 4px 16px rgba(0,0,0,0.06)`;
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "";
+                }}
+              >
+                {/* Watermark number */}
+                <span
+                  className="absolute top-4 right-4 font-serif font-bold text-[#1A1A1A] select-none pointer-events-none leading-none"
+                  style={{ fontSize: "clamp(5rem, 10vw, 8rem)", opacity: 0.04 }}
+                  aria-hidden="true"
+                >
+                  {col.num}
+                </span>
+
                 {/* Column header */}
-                <div className="mb-8">
+                <div className="mb-8 relative z-10">
                   <span className={`${col.accent} text-2xl mb-4 block`}>{col.icon}</span>
-                  <h3 className={`font-serif text-3xl text-[#1A1A1A] mb-4`}>{col.label}</h3>
+                  <h3 className="font-serif text-3xl text-[#1A1A1A] mb-4">{col.label}</h3>
                   <div className={`w-8 h-0.5 ${col.bg}`} />
                 </div>
 
                 {/* Description */}
-                <p className="text-stone-600 text-sm leading-relaxed mb-8 flex-1">
+                <p className="text-stone-600 text-sm leading-relaxed mb-8 flex-1 relative z-10">
                   {col.text}
                 </p>
 
-                {/* Items list */}
-                <ul className="space-y-2.5">
-                  {col.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-stone-700">
-                      <span className={`${col.accent} mt-0.5 text-xs`}>—</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Stagger-animated items list */}
+                <div className="relative z-10">
+                  <AnimatedList
+                    items={col.items}
+                    accentClass={col.accent}
+                    cardVisible={visible}
+                    baseDelay={0.3 + i * 0.15}
+                  />
+                </div>
               </div>
             </div>
           ))}

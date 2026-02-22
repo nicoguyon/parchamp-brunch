@@ -25,6 +25,12 @@ body {
   background-color: var(--cream);
   color: var(--charcoal);
   overflow-x: hidden;
+  cursor: none;
+}
+
+/* Hide default cursor on desktop only */
+@media (max-width: 768px) {
+  body { cursor: auto; }
 }
 
 /* Force breathing room on mobile */
@@ -39,6 +45,118 @@ h1, h2, h3, h4 {
   font-family: 'Playfair Display', Georgia, serif;
 }
 
+/* ─────────── Animations ─────────── */
+
+/* Classic fade-in-up */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Word reveal — each word slides+fades in */
+@keyframes wordReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) skewY(4deg);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) skewY(0deg);
+    filter: blur(0px);
+  }
+}
+.animate-word-reveal {
+  display: inline-block;
+  animation: wordReveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Scroll arrow pulse */
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0) rotate(45deg); opacity: 0.9; }
+  50%       { transform: translateY(7px) rotate(45deg); opacity: 0.4; }
+}
+.animate-arrow-bounce {
+  animation: arrowBounce 1.6s ease-in-out infinite;
+}
+
+/* Shimmer / shine pass */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255,255,255,0.22) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 5s linear infinite;
+  pointer-events: none;
+}
+
+/* Lieu animated gradient */
+@keyframes lieugradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.lieu-animated-bg {
+  background: linear-gradient(
+    140deg,
+    #0e0e0e 0%,
+    #1A1A1A 30%,
+    #111810 60%,
+    #0a0a0a 100%
+  );
+  background-size: 300% 300%;
+  animation: lieugradient 14s ease infinite;
+}
+
+/* Terracotta glow pulse for popular card */
+@keyframes terracottaGlow {
+  0%, 100% { box-shadow: 0 0 28px 4px rgba(198,93,62,0.30), 0 8px 32px rgba(198,93,62,0.18); }
+  50%       { box-shadow: 0 0 44px 10px rgba(198,93,62,0.45), 0 12px 48px rgba(198,93,62,0.28); }
+}
+.glow-terracotta {
+  animation: terracottaGlow 3s ease-in-out infinite;
+}
+
+/* Section ornament divider */
+.section-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+}
+.section-ornament::before,
+.section-ornament::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: var(--terracotta);
+  opacity: 0.35;
+}
+
+/* Experience image zoom on scroll */
+.scroll-zoom {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 /* Parallax base */
 .parallax-container {
   overflow: hidden;
@@ -46,29 +164,35 @@ h1, h2, h3, h4 {
 }
 
 /* Smooth scroll reveal */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--terracotta); border-radius: 3px; }
+
+/* Custom cursor */
+#custom-cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(198,93,62,0.7);
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  mix-blend-mode: multiply;
 }
-::-webkit-scrollbar-track {
-  background: var(--cream);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--terracotta);
-  border-radius: 3px;
+#custom-cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #C65D3E;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
 }
