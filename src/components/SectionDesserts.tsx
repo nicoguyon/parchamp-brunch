@@ -64,10 +64,10 @@ export default function SectionDesserts() {
       {/* Quote */}
       <div
         ref={textRef}
-        className={`relative z-10 text-center px-8 max-w-3xl mx-auto transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`relative z-10 text-center px-12 max-w-3xl mx-auto transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         <span className="text-[#C5A572] text-4xl font-serif leading-none block mb-6">&ldquo;</span>
-        <p className="font-serif text-white text-2xl md:text-3xl lg:text-4xl font-light italic leading-relaxed">
+        <p className="font-serif text-white text-2xl md:text-3xl lg:text-4xl font-light italic leading-relaxed max-w-prose mx-auto">
           On s&rsquo;était promis de ne prendre qu&rsquo;un dessert. La crème brûlée arrive, avec son craquement net sous la cuillère.
         </p>
         <span className="text-[#C5A572] text-4xl font-serif leading-none block mt-4">&rdquo;</span>

@@ -53,7 +53,7 @@ export default function SectionTarifs() {
 
   return (
     <section id="tarifs" className="py-24 md:py-36 bg-[#FAF7F2]">
-      <div className="max-w-7xl mx-auto px-8 md:px-12">
+      <div className="max-w-7xl mx-auto px-12 md:px-16">
 
         {/* Header */}
         <div ref={ref} className="text-center mb-20">
@@ -115,7 +115,7 @@ export default function SectionTarifs() {
 
         {/* CTA block */}
         <div className={`text-center transition-all duration-700 delay-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-stone-500 text-base font-light mb-8 font-serif italic">
+          <p className="text-stone-500 text-base font-light mb-8 font-serif italic max-w-prose mx-auto">
             Les dimanches se réservent — et celui-ci aussi.
           </p>
           <a

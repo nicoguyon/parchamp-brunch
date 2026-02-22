@@ -24,7 +24,7 @@ export default function SectionExperience() {
 
   return (
     <section id="experience" className="bg-[#2D4739] py-24 md:py-36 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8 md:px-12">
+      <div className="max-w-7xl mx-auto px-12 md:px-16">
 
         {/* Header */}
         <div ref={ref} className="mb-20">
@@ -38,7 +38,7 @@ export default function SectionExperience() {
 
         {/* Main text block */}
         <div className={`max-w-3xl mb-20 transition-all duration-700 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-white/80 text-xl md:text-2xl font-light leading-relaxed font-serif italic">
+          <p className="text-white/80 text-xl md:text-2xl font-light leading-relaxed font-serif italic max-w-prose mx-auto">
             &ldquo;Le dimanche au Parchamp a une texture particulière. Quelque chose entre la lenteur choisie et la légèreté retrouvée. On arrive à deux, en famille, entre amis — et l&rsquo;on s&rsquo;installe comme si l&rsquo;on avait toujours su que cette table était la nôtre.&rdquo;
           </p>
         </div>
@@ -82,7 +82,7 @@ export default function SectionExperience() {
           <div className={`transition-all duration-700 delay-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <div className="w-8 h-0.5 bg-[#C5A572] mb-6" />
             <h3 className="font-serif text-2xl text-white mb-4">La cour intérieure</h3>
-            <p className="text-white/65 text-sm leading-relaxed">
+            <p className="text-white/65 text-sm leading-relaxed max-w-prose mx-auto">
               Le restaurant La Table s&rsquo;ouvre sur une cour intérieure traversée de lumière naturelle. Sous les verrières, entre les boiseries sombres et les lustres en laiton antique, le brunch prend la forme d&rsquo;un interlude suspendu — là où l&rsquo;architecture moderniste de Boulogne-Billancourt dialogue avec une douceur de vivre méditerranéenne.
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function SectionExperience() {
           <div className={`transition-all duration-700 delay-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <div className="w-8 h-0.5 bg-[#C65D3E] mb-6" />
             <h3 className="font-serif text-2xl text-white mb-4">Ateliers enfants</h3>
-            <p className="text-white/65 text-sm leading-relaxed">
+            <p className="text-white/65 text-sm leading-relaxed max-w-prose mx-auto">
               Pendant que le buffet vous attend, les enfants de 3 à 11 ans sont accueillis dans un espace dédié, encadrés par des animateurs qui transforment chaque dimanche en aventure créative. Dessins, modelage, histoires — une heure d&rsquo;imaginaire pendant que les adultes redécouvrent le plaisir de prendre leur temps à table.
             </p>
           </div>

@@ -76,7 +76,7 @@ export default function SectionBrunch() {
 
   return (
     <section id="brunch" className="py-24 md:py-32 bg-[#FAF7F2]">
-      <div className="max-w-7xl mx-auto px-8 md:px-12">
+      <div className="max-w-7xl mx-auto px-12 md:px-16">
 
         {/* Header */}
         <div ref={ref} className="text-center mb-20">
@@ -97,7 +97,7 @@ export default function SectionBrunch() {
               className={`group transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${0.15 + i * 0.15}s` }}
             >
-              <div className="bg-white border border-stone-100 p-8 md:p-10 h-full flex flex-col hover:shadow-xl hover:shadow-stone-100 transition-shadow duration-500">
+              <div className="bg-white border border-stone-100 p-10 md:p-12 h-full flex flex-col hover:shadow-xl hover:shadow-stone-100 transition-shadow duration-500">
                 {/* Column header */}
                 <div className="mb-8">
                   <span className={`${col.accent} text-2xl mb-4 block`}>{col.icon}</span>

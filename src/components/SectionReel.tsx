@@ -61,7 +61,7 @@ export default function SectionReel() {
       id="reel"
       className="bg-[#0F0F0F] py-24 md:py-36 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-8 md:px-12">
+      <div className="max-w-7xl mx-auto px-12 md:px-16">
         {/* Header */}
         <div ref={ref} className="mb-16 md:mb-20">
           <p
@@ -90,10 +90,10 @@ export default function SectionReel() {
             }`}
           >
             <div className="w-8 h-0.5 bg-[#C5A572] mb-8" />
-            <p className="text-white/80 text-xl md:text-2xl font-light leading-relaxed font-serif italic mb-8">
+            <p className="text-white/80 text-xl md:text-2xl font-light leading-relaxed font-serif italic mb-8 max-w-prose mx-auto">
               &ldquo;Quelques secondes pour ressentir ce que les mots peinent à décrire — la lumière du dimanche, la générosité du buffet, le rire des enfants dans la cour.&rdquo;
             </p>
-            <p className="text-white/50 text-sm leading-relaxed mb-12">
+            <p className="text-white/50 text-sm leading-relaxed mb-12 max-w-prose mx-auto">
               Chaque semaine, Le Parchamp écrit la même histoire — différemment. Voici comment elle ressemble de l&rsquo;intérieur.
             </p>
 

@@ -57,7 +57,7 @@ export default function Hero() {
       </nav>
 
       {/* Hero content */}
-      <div className="relative z-10 w-full px-8 md:px-16 lg:px-24 pb-20 md:pb-28">
+      <div className="relative z-10 w-full px-12 md:px-16 lg:px-24 pb-20 md:pb-28">
         <div className="max-w-4xl">
           {/* Eyebrow */}
           <p className="text-brass-light text-sm tracking-[0.35em] uppercase mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>

@@ -23,7 +23,7 @@ export default function SectionLieu() {
 
   return (
     <section id="lieu" className="py-24 md:py-36 bg-[#1A1A1A]">
-      <div className="max-w-7xl mx-auto px-8 md:px-12">
+      <div className="max-w-7xl mx-auto px-12 md:px-16">
 
         {/* Header */}
         <div ref={ref} className="mb-20">
@@ -39,10 +39,10 @@ export default function SectionLieu() {
 
           {/* Text */}
           <div className={`transition-all duration-700 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <p className="text-white/75 text-lg leading-relaxed mb-8">
+            <p className="text-white/75 text-lg leading-relaxed mb-8 max-w-prose mx-auto">
               Le Parchamp porte l&rsquo;héritage de Boulogne-Billancourt avec une certaine élégance discrète. Imaginé dans l&rsquo;esprit des maîtres du modernisme — Le Corbusier, Auguste Perret — cet hôtel Tribute Portfolio (Marriott) dessine une architecture de lignes franches, de matières nobles, et d&rsquo;espaces qui respirent.
             </p>
-            <p className="text-white/60 text-sm leading-relaxed mb-8">
+            <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-prose mx-auto">
               Au rez-de-chaussée, le restaurant La Table ouvre sur une cour intérieure baignée de lumière naturelle. Les verrières, les boiseries sombres, les lustres en laiton antique et les murs terracotta composent un cadre à la fois intime et généreux — le décor idéal pour que le dimanche prenne tout son sens.
             </p>
             <p className="text-white/60 text-sm leading-relaxed">
