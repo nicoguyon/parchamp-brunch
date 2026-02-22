@@ -61,7 +61,7 @@ export default function SectionReel() {
       id="reel"
       className="bg-[#0F0F0F] py-24 md:py-36 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-8 md:px-12">
         {/* Header */}
         <div ref={ref} className="mb-16 md:mb-20">
           <p

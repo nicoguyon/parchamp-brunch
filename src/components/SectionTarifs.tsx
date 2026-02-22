@@ -53,7 +53,7 @@ export default function SectionTarifs() {
 
   return (
     <section id="tarifs" className="py-24 md:py-36 bg-[#FAF7F2]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-8 md:px-12">
 
         {/* Header */}
         <div ref={ref} className="text-center mb-20">

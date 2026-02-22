@@ -23,7 +23,7 @@ export default function SectionLieu() {
 
   return (
     <section id="lieu" className="py-24 md:py-36 bg-[#1A1A1A]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-8 md:px-12">
 
         {/* Header */}
         <div ref={ref} className="mb-20">

@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="bg-[#1A1A1A] border-t border-white/10">
 
       {/* Top bar */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+      <div className="max-w-7xl mx-auto px-8 md:px-12 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
 
           {/* Brand */}
